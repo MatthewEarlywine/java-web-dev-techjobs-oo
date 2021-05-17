@@ -12,6 +12,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private String noData = "Data not available";
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -30,6 +31,19 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
+
+    @Override
+    public String toString(){
+        return  "     \n" + "ID: " + this.getId() +
+                "\n" + "Name: " + this.getName() +
+                "\n" + "Employer: " + this.getEmployer() +
+                "\n" + "Location: " + this.getLocation() +
+                "\n" + "Position Type: " + this.getPositionType() +
+                "\n" + "Core Competency: " + this.getCoreCompetency() +
+                "\n             ";
+    }
+
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.

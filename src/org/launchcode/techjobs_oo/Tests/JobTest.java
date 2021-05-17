@@ -12,6 +12,7 @@ public class JobTest {
     Job test_job2 = new Job();
     Job test_job3;
     Job test_job4 = new Job();
+    Job test_job5 = new Job();
 
     @Before
     public void createJobObject1(){
@@ -21,6 +22,11 @@ public class JobTest {
     @Before
     public void createJobObject2(){
         test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    }
+
+    @Before
+    public void createJobObject5(){
+        test_job5 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType(), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -52,5 +58,27 @@ public class JobTest {
     @Test
     public void testJobsForEquality(){
         assertFalse(test_job3.equals(test_job4));
+    }
+
+    @Test
+    public void testToStringMethod (){
+        assertTrue(test_job1.toString().substring(0, 2).isBlank());
+        assertTrue(test_job1.toString().substring(test_job4.toString().length() - 2, test_job4.toString().length()).isBlank());
+    }
+
+    @Test
+    public void testToStringMethod2(){
+        assertEquals(test_job4.toString(), "     \n" + "ID: " + test_job4.getId() +
+                "\n" + "Name: " + test_job4.getName() +
+                "\n" + "Employer: " + test_job4.getEmployer() +
+                "\n" + "Location: " + test_job4.getLocation() +
+                "\n" + "Position Type: " + test_job4.getPositionType() +
+                "\n" + "Core Competency: " + test_job4.getCoreCompetency() +
+                "\n             ");
+    }
+
+    @Test
+    public void testToStringMethod3(){
+        assertTrue(test_job5.getName() == null);
     }
 }
