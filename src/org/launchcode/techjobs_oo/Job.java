@@ -49,7 +49,12 @@ public class Job {
     //  match.
 
     public String getName() {
-        return name;
+        if(name.isBlank()){
+            name = noData;
+            return name;
+        } else {
+            return name;
+        }
     }
 
     public void setName(String name) {
