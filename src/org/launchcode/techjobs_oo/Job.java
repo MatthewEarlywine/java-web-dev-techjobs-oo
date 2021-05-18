@@ -35,13 +35,15 @@ public class Job {
 
     @Override
     public String toString(){
-        return  "     \n" + "ID: " + this.getId() +
+        String jobOutput =  "     \n" + "ID: " + this.getId() +
                 "\n" + "Name: " + this.getName() +
                 "\n" + "Employer: " + this.getEmployer() +
                 "\n" + "Location: " + this.getLocation() +
                 "\n" + "Position Type: " + this.getPositionType() +
                 "\n" + "Core Competency: " + this.getCoreCompetency() +
                 "\n             ";
+
+        return jobOutput;
     }
 
 
@@ -49,7 +51,7 @@ public class Job {
     //  match.
 
     public String getName() {
-        if(name.isBlank()){
+        if(name.isBlank() || name==null){
             name = noData;
             return name;
         } else {
@@ -61,32 +63,56 @@ public class Job {
         this.name = name;
     }
 
-    public Employer getEmployer() {
-        return employer;
+    public Object getEmployer() {
+        if(employer.getValue().isBlank() || employer.getValue()==null){
+            String val = employer.getValue();
+            val = noData;
+            return val;
+        } else {
+            return employer;
+        }
     }
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
-    public Location getLocation() {
-        return location;
+    public Object getLocation() {
+        if(location.getValue().isBlank() || location.getValue()==null){
+            String val = location.getValue();
+            val = noData;
+            return val;
+        } else {
+            return location;
+        }
     }
 
     public void setLocation(Location location) {
         this.location = location;
     }
 
-    public PositionType getPositionType() {
-        return positionType;
+    public Object getPositionType() {
+        if(positionType.getValue().isBlank() || positionType.getValue()==null){
+            String val = positionType.getValue();
+            val = noData;
+            return val;
+        } else {
+            return positionType;
+        }
     }
 
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
 
-    public CoreCompetency getCoreCompetency() {
-        return coreCompetency;
+    public Object getCoreCompetency() {
+        if(coreCompetency.getValue().isBlank() || coreCompetency.getValue()==null){
+            String val = coreCompetency.getValue();
+            val = noData;
+            return val;
+        } else {
+            return coreCompetency;
+        }
     }
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {

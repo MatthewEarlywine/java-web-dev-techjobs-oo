@@ -47,12 +47,7 @@ public class Location {
     }
 
     public String getValue() {
-        if(value.isBlank()){
-            value = "Data not available";
-            return value;
-        } else {
-            return value;
-        }
+        return value;
     }
 
     public void setValue(String value) {

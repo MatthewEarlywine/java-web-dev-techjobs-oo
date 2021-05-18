@@ -26,7 +26,7 @@ public class JobTest {
 
     @Before
     public void createJobObject5(){
-        test_job5 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType(), new CoreCompetency("Persistence"));
+        test_job5 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
     }
 
     @Test
@@ -62,8 +62,8 @@ public class JobTest {
 
     @Test
     public void testToStringMethod (){
-        assertTrue(test_job1.toString().substring(0, 2).isBlank());
-        assertTrue(test_job1.toString().substring(test_job4.toString().length() - 2, test_job4.toString().length()).isBlank());
+        assertTrue(test_job5.toString().substring(0, 2).isBlank());
+        assertTrue(test_job5.toString().substring(test_job5.toString().length() - 2, test_job5.toString().length()).isBlank());
     }
 
     @Test
@@ -79,6 +79,10 @@ public class JobTest {
 
     @Test
     public void testToStringMethod3(){
-        assertTrue(test_job5.getName() == null);
+        assertTrue(test_job5.getName().equals("Data not available"));
+        assertTrue(test_job5.getEmployer().equals("Data not available"));
+        assertTrue(test_job5.getLocation().equals("Data not available"));
+        assertTrue(test_job5.getPositionType().equals("Data not available"));
+        assertTrue(test_job5.getCoreCompetency().equals("Data not available"));
     }
 }
