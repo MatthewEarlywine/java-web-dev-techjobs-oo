@@ -92,7 +92,7 @@ public class Job {
     }
 
     public Object getPositionType() {
-        if(positionType.getValue().isBlank() || positionType.getValue()==null){
+        if(positionType.getValue().isBlank() || positionType.getValue() == null){
             String val = positionType.getValue();
             val = noData;
             return val;
