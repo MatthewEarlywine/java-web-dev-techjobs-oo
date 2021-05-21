@@ -32,87 +32,71 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-
     @Override
     public String toString(){
-        String jobOutput =  "     \n" + "ID: " + this.getId() +
-                "\n" + "Name: " + this.getName() +
-                "\n" + "Employer: " + this.getEmployer() +
-                "\n" + "Location: " + this.getLocation() +
-                "\n" + "Position Type: " + this.getPositionType() +
-                "\n" + "Core Competency: " + this.getCoreCompetency() +
-                "\n             ";
-
-        return jobOutput;
+        String output = "";
+        if (name.equals("")){
+            name = noData;
+        }
+        if (employer.getValue().equals("") || employer.getValue() == null){
+            employer.setValue(noData);
+        }
+        if (location.getValue().equals("") || location.getValue() == null){
+            location.setValue(noData);
+        }
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
+            coreCompetency.setValue(noData);
+        }
+        if (positionType.getValue().equals("") || positionType.getValue() == null){
+            positionType.setValue(noData);
+        }
+        output = String.format(
+                "\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
+        return output;
     }
-
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     public String getName() {
-        if(name.isBlank() || name==null){
-            name = noData;
-            return name;
-        } else {
-            return name;
-        }
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Object getEmployer() {
-        if(employer.getValue().isBlank() || employer.getValue()==null){
-            String val = employer.getValue();
-            val = noData;
-            return val;
-        } else {
-            return employer;
-        }
+    public Employer getEmployer() {
+        return employer;
     }
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
-    public Object getLocation() {
-        if(location.getValue().isBlank() || location.getValue()==null){
-            String val = location.getValue();
-            val = noData;
-            return val;
-        } else {
-            return location;
-        }
+    public Location getLocation() {
+        return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
     }
 
-    public Object getPositionType() {
-        if(positionType.getValue().isBlank() || positionType.getValue() == null){
-            String val = positionType.getValue();
-            val = noData;
-            return val;
-        } else {
-            return positionType;
-        }
+    public PositionType getPositionType() {
+        return positionType;
     }
 
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
 
-    public Object getCoreCompetency() {
-        if(coreCompetency.getValue().isBlank() || coreCompetency.getValue()==null){
-            String val = coreCompetency.getValue();
-            val = noData;
-            return val;
-        } else {
-            return coreCompetency;
-        }
+    public CoreCompetency getCoreCompetency() {
+        return coreCompetency;
     }
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {

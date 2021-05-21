@@ -26,7 +26,9 @@ public class JobTest {
 
     @Before
     public void createJobObject5(){
-        test_job5 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        test_job5 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -61,28 +63,36 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringMethod (){
-        assertTrue(test_job5.toString().substring(0, 2).isBlank());
-        assertTrue(test_job5.toString().substring(test_job5.toString().length() - 2, test_job5.toString().length()).isBlank());
+    public void testToStringMethodStartsAndEndsWithNewLine (){
+        char firstChar = test_job5.toString().charAt(0);
+        String firstString = String.valueOf(firstChar);
+        char lastChar = test_job5.toString().charAt((test_job5.toString().length() - 1));
+        String lastString = String.valueOf(lastChar);
+        assertEquals(firstString, "\n");
+        assertEquals(lastString, "\n");
     }
 
     @Test
     public void testToStringMethod2(){
-        assertEquals(test_job4.toString(), "     \n" + "ID: " + test_job4.getId() +
-                "\n" + "Name: " + test_job4.getName() +
-                "\n" + "Employer: " + test_job4.getEmployer() +
-                "\n" + "Location: " + test_job4.getLocation() +
-                "\n" + "Position Type: " + test_job4.getPositionType() +
-                "\n" + "Core Competency: " + test_job4.getCoreCompetency() +
-                "\n             ");
+        String output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", test_job4.getId(), test_job4.getName(), test_job4.getEmployer(), test_job4.getLocation(), test_job4.getPositionType(), test_job4.getCoreCompetency());
+        assertEquals(output, test_job4.toString());
     }
 
     @Test
     public void testToStringMethod3(){
-        assertTrue(test_job5.getName().equals("Data not available"));
-        assertTrue(test_job5.getEmployer().equals("Data not available"));
-        assertTrue(test_job5.getLocation().equals("Data not available"));
-        assertTrue(test_job5.getPositionType().equals("Data not available"));
-        assertTrue(test_job5.getCoreCompetency().equals("Data not available"));
+        test_job5.getEmployer().setValue("");
+        test_job5.getPositionType().setValue("");
+        String output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: Data not available\n" +
+                "Location: %s\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: %s\n",test_job5.getId(), test_job5.getName(), test_job5.getLocation(), test_job5.getCoreCompetency());
+        assertEquals(output, test_job5.toString());
     }
 }
